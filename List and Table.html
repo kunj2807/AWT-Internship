@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <title>Table and list</title>
+    <link rel="stylesheet" href="kunj.css">
+    <style>
+        li:nth-child(even){
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Unorder list</h3>
+    <ul type="circle">
+        <li>This is first unorder line</li>
+        <li>This is second unorder line</li>
+        <li>This is third unorder line</ii>
+            <ul class="kunj">
+                <li>This is inner line 1</li>
+                <li>This is inner line 2</li>
+                <li>This is inner line 3</li>
+                <li>This is inner line 4</li>
+            </ul>
+        <li>This is forth unorder line</li>
+    </ul>
+    <h3>Order list</h3>
+    <ol type="I">
+        <li>This is first order line</li>
+        <li>This is second order line</li>
+        <ol type="i" class="kunj">
+            <li>This is inner line 1</li>
+            <li>This is inner line 2</li>
+            <li>This is inner line 3</li>
+        </ol>
+        <li>This is third order line</li>
+        <li>This is forth order line</li>
+    </ol>
+    <h3>deffination list</h3>
+    <dl>
+        <dt>This is title</dt>
+        <dd>This is deffination</dd>
+        <dt>This is title</dt>
+        <dd>This is deffination</dd>
+    </dl>
+    <h3>HTML Table</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>language</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>kunj</td>
+                <td>166</td>
+                <td>python</td>
+            </tr>
+            <tr>
+                <td>kunj</td>
+                <td>166</td>
+                <td>java</td>
+            </tr>
+            <tr>
+                <td>kunj</td>
+                <td>166</td>
+                <td>HTML</td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
