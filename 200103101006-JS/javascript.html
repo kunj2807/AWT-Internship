@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="external.js"></script>
+    <script>
+        function alertinternal(){
+            alert("You are in internal javascript");
+        }
+        function confirminternal(){
+        confirm("Are you sure..??")
+        }
+        function promptinternal(){
+            let first=prompt('Enter your first name');
+            let second=prompt('Enter your second name');
+            alert(first+" "+second);
+        }
+        function changediv(){
+            let x=document.getElementsByClassName('box');
+            x[0].style.backgroundColor='Green'
+        }
+        function changebody(){
+            document.body.style.backgroundColor='skyblue'
+        }
+        function divdynamic(){
+            document.getElementsByClassName('box')[0].style.backgroundColor=prompt("Enter color")
+        }
+        function bodydynamic(){
+            document.body.style.backgroundColor=prompt("Enter color")
+        }
+        function divcolor(){
+            document.getElementsByClassName('box')[0].style.backgroundColor=document.getElementById('div').value
+        }
+        function bodycolor(){
+            document.body.style.backgroundColor=document.getElementById('body').value
+        }
+    </script>
+    <style>
+        .box{
+            background-color: brown;
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div><hr>
+    <button onclick="alert('You are in inline javascript')">Alert inline</button>
+    <button onclick="confirm('Are you sure..??')">Confirm inline</button>
+    <button onclick="prompt('Enter your name')">Prompt inline</button><hr>
+
+    <button onclick="alertinternal()">Alert internal</button>
+    <button onclick="confirminternal()">Confirm internal</button>
+    <button onclick="promptinternal()">Prompt internal</button><hr>
+
+    <button onclick="alertexternal()">Alert external</button>
+    <button onclick="confirmexternal()">Confirm external</button>
+    <button onclick="promptexternal()">Prompt external</button><hr>
+
+    <button onclick="changediv()">Change div color</button>
+    <button  onclick="changebody()">Change body color</button><hr>
+
+    <button onclick="divdynamic()">div dynamic</button>
+    <button onclick="bodydynamic()">body dynamic</button><hr>
+
+    <input type="color" id="div" onchange="divcolor()"><hr>
+    <input type="color" id='body'onchange="bodycolor()">
+
+</body>
+</html>
