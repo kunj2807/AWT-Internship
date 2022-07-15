@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+			
+			//Reg Ex Declaration - Globaly.
+			var $FNameLNameRegEx = /^([a-zA-Z]{2,20})$/;
+			var $FullNameRegEx = /^([a-zA-Z ]{2,40})$/;
+			var $BankAccountNameRegEx = /^([a-zA-Z ]{2,60})$/;
+			var $PasswordRegEx = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,12}$/;
+
+			var $EmailIdRegEx = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,8}\b$/i;
+			var $ConNoRegEx = /^([0-9]{10})$/;
+			var $AgeRegEx = /^([0-9]{1,2})$/;
+			var $AadhaarNoRegEx = /^([0-9]{12})$/;
+			var $GSTNoRegEx=/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+			var $IndianDrivingLicenseNoRegEx = /^([A-Z]{2,3}[-/0-9]{8,13})$/;
+			var $IndianVehicleRegNoRegEx = /^([A-Z]{2}[0-9]{1,2}[A-Z]{1,3}[0-9]{1,4})$/;
+			var $PincodeRegEx = /^[1-9][0-9]{5,6}$/;
+			var $PANNoRegEx = /^[A-Z]{3}[ABCFGHLJPT][A-Z][0-9]{4}[A-Z]$/;
+			var $IFSCCodeRegEx = /^[A-Za-z]{4}0[A-Z0-9a-z]{6}$/;
+			var $BankAccountNoRegEx = /^([0-9]{9,18})$/;
+			var $LatitudeLongitude=/^(-?(?:1[0-7]|[1-9])?\d(?:\.\d{1,8})?|180(?:\.0{1,8})?)$/;
+			
+			$(document).ready(function(){
+
+				$("#name").blur(function(){
+					$("#namesmall").empty();
+					if($(this).val()=="" || $(this).val()==null){
+						$("#namesmall").html("(*) required..!!");
+					}
+					else{
+						if(!$(this).val().match($FullNameRegEx)){
+							$("#namesmall").html("(*) Invalid..!!");
+						}
+					}
+				});
+
+				$("#name").keypress(function(e){
+					$("#namesmall").empty();
+					var Flag=((e.which>=65 && e.which<=90) || (e.which>=97 && e.which<=121));
+					if(Flag==false){
+						$("#namesmall").html("Invalid..!!");
+					}
+					return Flag;
+				});
+
+				$("#phone").blur(function(){
+					$("#phonesmall").empty();
+					if($(this).val()=="" || $(this).val()==null){
+						$("#phonesmall").html("(*) required..!!");
+					}
+					else{
+						if(!$(this).val().match($ConNoRegEx)){
+							$("#phonesmall").html("(*) Invalid..!!");
+						}
+					}
+				});
+
+				$("#phone").keypress(function(e){
+					$("#phonesmall").empty();
+					var Flag=(e.which>=48 && e.which<=57);
+					if(Flag==false){
+						$("#phonesmall").html("Invalid Input..!!");
+					}
+					return Flag;
+				});
+
+
+				$("#email").blur(function(){
+					$("#emailsmall").empty();
+					if($(this).val()=="" || $(this).val()==null){
+						$("#emailsmall").html("(*) required..!!");
+					}
+					else{
+						if(!$(this).val().match($EmailIdRegEx)){
+							$("#emailsmall").html("(*) Invalid...!!");
+						}
+					}
+				});
+
+				$("#area").blur(function(){
+					$("#areasmall").empty();
+					if($(this).val()=="" || $(this).val()==null){
+						$("#areasmall").html("(*) required..!!");
+					}
+					else{
+						if($("#area").val().length>300){
+							$("#areasmall").html("(*) Invalid..!!");
+						}
+					}
+				});
+
+				var nameFlag=false,phoneFlag=false,emailFlag=false,areaFlag=false;
+
+				$("#BtnSubmit").click(function(){
+					$("#namesmall").empty();
+					if($("#name").val()=="" || $("#name").val()==null){
+						$("#namesmall").html("(*) required..!!");
+						nameFlag=false;
+					}
+					else{
+						if(!$("#name").val().match($FullNameRegEx)){
+							$("#namesmall").html("(*) Invalid..!!");
+							nameFlag=false;
+						}
+						else{
+							nameFlag=true;
+						}
+					}
+					$("#phonesmall").empty();
+					if($("#phone").val()=="" || $("#phone").val()==null){
+						$("#phonesmall").html("(*) required..!!");
+						phoneFlag=false;
+					}
+					else{
+						if(!$("#phone").val().match($ConNoRegEx)){
+							$("#phonesmall").html("(*) Invalid..!!");
+							phoneFlag=false;
+						}
+						else{
+							phoneFlag=true;
+						}
+					}
+					$("#emailsmall").empty();
+					if($("#email").val()=="" || $("#email").val()==null){
+						$("#emailsmall").html("(*) required..!!");
+						emailFlag=false;
+					}
+					else{
+						if(!$("#email").val().match($EmailIdRegEx)){
+							$("#emailsmall").html("(*) Invalid..!!");
+							emailFlag=false;
+						}
+						else{
+							emailFlag=true;
+						}
+					}
+					$("#areasmall").empty();
+					if($("#area").val()=="" || $("#area").val()==null){
+						$("#areasmall").html("(*) required..!!");
+						areaFlag=false;
+					}
+					else{
+						if($("#area").val().length>300){
+							$("#areasmall").html("(*) Invalid..!!");
+							areaFlag=false;
+						}
+						else{
+							areaFlag=true;
+						}
+					}
+					if(nameFlag==true && phoneFlag==true && emailFlag==true && areaFlag==true){
+						alert("Form submitted successfully..!!");
+					}
+					else{
+						alert("Invalid Input..!!");
+					}
+				});
+
+			});
+			
+		</script>
+		<style type="text/css">
+			small{color:red;}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="name" autofocus placeholder="enter the name"/><br/>
+		<small id="namesmall"></small><br>
+		<input type="text" id="phone" placeholder="enter the contact no."/><br/>
+		<small id="phonesmall"></small><br>
+		<input type="text" id="email" placeholder="enter the email id"/><br/>
+		<small id="emailsmall"></small><br>
+		<textarea rows="5" id="area" placeholder="enter the contact msg""></textarea><br/>
+		<small id="areasmall"></small><br>
+		<button id="BtnSubmit">submit</button>
+	</body>
+</html>

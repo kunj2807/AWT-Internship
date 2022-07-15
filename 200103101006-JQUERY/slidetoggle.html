@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script> 
+    $(document).ready(function(){
+      $(".box1").click(function(){
+        $(".box2").slideToggle(2000);
+  });
+});
+</script>
+<style> 
+.box1, .box2 {
+  padding: 8px;
+  text-align: center;
+  background-color: gray;
+  border: solid 1px black;
+}
+
+.box2 {
+  padding: 50px;
+  display: none;
+}
+</style>
+</head>
+<body>
+ 
+<div class="box1">Click to slide down box</div>
+<div class="box2">This is box</div>
+
+</body>
+</html>
